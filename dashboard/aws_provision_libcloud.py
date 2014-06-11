@@ -28,3 +28,4 @@ def provision(access_id,
     node = driver.create_node(name=node_name, image=image, size=size,
                               ex_keyname=keypair_name,
                               ex_securitygroup=sec_groups)
+    return node

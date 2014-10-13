@@ -1,3 +1,5 @@
 #! switch [*]
 
 hostname
+cat /etc/*-release
+

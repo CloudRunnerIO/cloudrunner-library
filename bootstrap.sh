@@ -49,7 +49,6 @@ elif [ -n "$(which emerge)" ]; then
 fi
 
 if [ -z "$PKG_CMD" ]; then
-else
 	echo "No package manager detected! Exiting..."
 	exit 1
 fi

@@ -89,7 +89,7 @@ if [ -n "$CRN_TAGS" ]; then
 fi
 
 # Initial configuration
-cloudruner-node configure --id ${CRN_NODE:-$(hostname)} --server $CRN_SERVER $OPTS
+cloudrunner-node configure --id ${CRN_NODE:-$(hostname)} --server $CRN_SERVER $OPTS
 
 # Run service
 cloudrunner-node restart --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}

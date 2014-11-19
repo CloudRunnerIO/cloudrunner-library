@@ -71,20 +71,20 @@ $PYTHON setup.py install
 
 OPTS=""
 
-if [ -z "$CRN_SERVER" ]; then
+if [[ ! $CRN_SERVER ]]; then
 	echo "Enter CloudRunner Master Server IP:"
 	read CRN_SERVER
 fi
 
-if [ -n "$CRN_ORG" ]; then
+if [[ $CRN_ORG && ${CRN_ORG-x} ]]; then
 	OPTS=" $OPTS --org $CRN_ORG"
 fi
 
-if [ -n "$CRN_OVERWRITE" ]; then
+if [[ $CRN_OVERWRITE && ${CRN_OVERWRITE-x} ]]; then
 	OPTS=" $OPTS --overwrite"
 fi
 
-if [ -n "$CRN_TAGS" ]; then
+if [[ $CRN_TAGS && ${CRN_TAGS-x} ]]; then
 	OPTS=" $OPTS -t $CRN_TAGS"
 fi
 

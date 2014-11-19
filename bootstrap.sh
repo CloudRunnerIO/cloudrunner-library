@@ -12,7 +12,7 @@ PKG_CMD=""
 PKG_UPDATE=""
 PKG_INSTALL=""
 LIBS=""
-PYTHON='$(which python)'
+PYTHON="$(which python)"
 
 # Install requirements
 if [ -n "$(which apt-get)" ]; then
@@ -58,6 +58,9 @@ $PKG_UPDATE
 
 # Install requirements
 $PKG_INSTALL
+
+# Clean 'cloudrunner' dir if exists
+rm -rf cloudrunner
 
 # Clone cloudrunner stable branch
 git clone -b v1.0 https://github.com/CloudRunnerIO/cloudrunner.git

@@ -89,6 +89,7 @@ if [[ $CRN_TAGS && ${CRN_TAGS-x} ]]; then
 fi
 
 # Initial configuration
+cloudrunner-exec mode server
 cloudrunner-node configure --id ${CRN_NODE:-$(hostname)} --server $CRN_SERVER $OPTS
 
 # Run service

@@ -19,32 +19,32 @@ if [ -n "$(which apt-get)" ]; then
 	# Debian/Ubuntu
     PKG_CMD=$(which apt-get)
     LIBS="g++ python-dev libssl-dev git swig"
-    PKG_UPDATE="$PKG_CMD update; $PKG_CMD upgrade -y"
+    PKG_UPDATE="$PKG_CMD update"
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which yum)" ]; then
 	# RedHat/Fedora/CentOS
     PKG_CMD=$(which yum)
     LIBS="gcc-c++ python-devel openssl-devel git swig"
-    PKG_UPDATE="$PKG_CMD update -y"
+    PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which zypper)" ]; then
 	# SUSE Linux
     PKG_CMD=$(which zypper)
     LIBS="gcc-c++ python-devel openssl-devel git swig"
-    PKG_UPDATE="$PKG_CMD up"
+    PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD -n in $LIBS"
 elif [ -n "$(which pacman)" ]; then
 	# ArchLinux
     PKG_CMD=$(which pacman)
     LIBS="gcc python2 openssl git swig"
-    PKG_UPDATE="yes | $PKG_CMD -Syu"
+    PKG_UPDATE=""
     PKG_INSTALL="yes | $PKG_CMD -Sy $LIBS"
     PYTHON="$(which python2)"
 elif [ -n "$(which emerge)" ]; then
 	# Gentoo
     PKG_CMD=$(which emerge)
     LIBS="gcc python2 openssl dev-vcs/git swig"
-    PKG_UPDATE="$PKG_CMD --sync"
+    PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD $LIBS"
 fi
 
@@ -53,7 +53,7 @@ if [ -z "$PKG_CMD" ]; then
 	exit 1
 fi
 
-# Update packages
+# Update repo data
 $PKG_UPDATE
 
 # Install requirements

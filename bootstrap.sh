@@ -30,7 +30,7 @@ elif [ -n "$(which yum)" ]; then
 elif [ -n "$(which zypper)" ]; then
 	# SUSE Linux
     PKG_CMD=$(which zypper)
-    LIBS="gcc-c++ python-devel openssl-devel git swig"
+    LIBS="gcc-c++ python-devel openssl-devel git swig python-m2crypto"
     PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD -n in $LIBS"
 elif [ -n "$(which pacman)" ]; then

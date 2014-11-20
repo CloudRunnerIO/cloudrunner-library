@@ -13,6 +13,7 @@ PKG_UPDATE=""
 PKG_INSTALL=""
 LIBS=""
 PYTHON="$(which python)"
+ADDS=""
 
 # Install requirements
 if [ -n "$(which apt-get)" ]; then
@@ -38,8 +39,9 @@ elif [ -n "$(which pacman)" ]; then
     PKG_CMD=$(which pacman)
     LIBS="gcc python2 openssl git swig python2-m2crypto"
     PKG_UPDATE="$PKG_CMD -Syu --noconfirm"
-    PKG_INSTALL="$PKG_CMD -Sy --noconfirm $LIBS"
+    PKG_INSTALL="$PKG_CMD -Sy --noconfirm --needed $LIBS"
     PYTHON="$(which python2)"
+    ADDS="$PKG_CMD -Sy --noconfirm --needed python2-pyzmq"
 elif [ -n "$(which emerge)" ]; then
 	# Gentoo
     PKG_CMD=$(which emerge)
@@ -58,6 +60,10 @@ $PKG_UPDATE
 
 # Install requirements
 $PKG_INSTALL
+
+if [ -n "$ADDS" ]; then
+    $ADDS
+fi
 
 # Clean 'cloudrunner' dir if exists
 rm -rf cloudrunner

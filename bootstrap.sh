@@ -43,8 +43,8 @@ elif [ -n "$(which pacman)" ]; then
 elif [ -n "$(which emerge)" ]; then
 	# Gentoo
     PKG_CMD=$(which emerge)
-    LIBS="gcc python2 openssl dev-vcs/git swig"
-    PKG_UPDATE=""
+    LIBS="gcc openssl dev-vcs/git swig"
+    PKG_UPDATE="emerge --sync"
     PKG_INSTALL="$PKG_CMD $LIBS"
 fi
 

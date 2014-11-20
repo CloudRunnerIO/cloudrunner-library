@@ -36,7 +36,7 @@ elif [ -n "$(which zypper)" ]; then
 elif [ -n "$(which pacman)" ]; then
 	# ArchLinux
     PKG_CMD=$(which pacman)
-    LIBS="gcc python2 openssl git swig"
+    LIBS="gcc python2 openssl git swig python2-m2crypto"
     PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD -Sy --noconfirm $LIBS"
     PYTHON="$(which python2)"

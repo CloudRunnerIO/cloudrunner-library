@@ -18,7 +18,7 @@ PYTHON="$(which python)"
 if [ -n "$(which apt-get)" ]; then
 	# Debian/Ubuntu
     PKG_CMD=$(which apt-get)
-    LIBS="g++ python-dev libssl-dev git m2crypto swig python-setuptools"
+    LIBS="g++ python-dev libssl-dev git-core m2crypto swig python-setuptools"
     PKG_UPDATE="$PKG_CMD update"
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which yum)" ]; then

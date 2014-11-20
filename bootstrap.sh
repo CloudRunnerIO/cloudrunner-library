@@ -44,7 +44,7 @@ elif [ -n "$(which emerge)" ]; then
 	# Gentoo
     PKG_CMD=$(which emerge)
     LIBS="gcc openssl dev-vcs/git swig"
-    PKG_UPDATE="emerge --sync"
+    PKG_UPDATE="$PKG_CMD --sync"
     PKG_INSTALL="$PKG_CMD $LIBS"
 fi
 

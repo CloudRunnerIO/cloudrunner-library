@@ -94,8 +94,14 @@ if [[ $CRN_TAGS && ${CRN_TAGS-x} ]]; then
 	OPTS=" $OPTS -t $CRN_TAGS"
 fi
 
+if [ -n "$(which hostid)" ]; then
+    $HOST=$(hostid)
+else
+    $HOST=$(hostname)
+fi
+
 # Initial configuration
-cloudrunner-node configure --mode server --id ${CRN_NODE:-$(hostname)} --server $CRN_SERVER $OPTS
+cloudrunner-node configure --mode server --id ${CRN_NODE:-$HOST} --server $CRN_SERVER $OPTS
 
 if [[ ! $CRN_NORUN ]]; then
     cloudrunner-node restart --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}

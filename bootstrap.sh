@@ -82,8 +82,8 @@ if [[ ! $CRN_SERVER ]]; then
 	read CRN_SERVER
 fi
 
-if [[ $CRN_ORG && ${CRN_ORG-x} ]]; then
-	OPTS=" $OPTS --org $CRN_ORG"
+if [[ $CRN_KEY && ${CRN_KEY-x} ]]; then
+	OPTS=" $OPTS --org $CRN_KEY"
 fi
 
 if [[ $CRN_OVERWRITE && ${CRN_OVERWRITE-x} ]]; then
@@ -97,5 +97,6 @@ fi
 # Initial configuration
 cloudrunner-node configure --mode server --id ${CRN_NODE:-$(hostname)} --server $CRN_SERVER $OPTS
 
-# Run service
-cloudrunner-node restart --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}
+if [[ ! $CRN_NORUN ]]; then
+    cloudrunner-node restart --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}
+fi

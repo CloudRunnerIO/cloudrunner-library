@@ -94,10 +94,11 @@ if [[ $CRN_TAGS && ${CRN_TAGS-x} ]]; then
 	OPTS=" $OPTS -t $CRN_TAGS"
 fi
 
+HOST=""
 if [ -n "$(which hostid)" ]; then
-    $HOST=$(hostid)
+    HOST=$(hostid)
 else
-    $HOST=$(hostname)
+    HOST=$(hostname)
 fi
 
 # Initial configuration

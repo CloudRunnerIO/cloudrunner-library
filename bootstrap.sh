@@ -69,7 +69,7 @@ fi
 rm -rf cloudrunner
 
 # Clone cloudrunner stable branch
-git clone -b v1.0 https://github.com/CloudRunnerIO/cloudrunner.git
+git clone https://github.com/CloudRunnerIO/cloudrunner.git
 
 cd cloudrunner
 
@@ -102,7 +102,7 @@ else
 fi
 
 # Initial configuration
-cloudrunner-node configure --mode server --id ${CRN_NODE:-$HOST} --server $CRN_SERVER $OPTS
+cloudrunner-node configure --id ${CRN_NODE:-$HOST} --server $CRN_SERVER $OPTS
 
 cloudrunner-node details
 

@@ -25,8 +25,8 @@ if [ -n "$(which apt-get)" ]; then
 elif [ -n "$(which yum)" ]; then
 	# RedHat/Fedora/CentOS
     PKG_CMD=$(which yum)
-    LIBS="gcc-c++ python-devel openssl-devel git swig python-setuptools"
-    PKG_UPDATE="yum install -y epel-release"
+    LIBS="gcc-c++ python-devel openssl-devel git swig python-setuptools m2crypto"
+    PKG_UPDATE="yum install -y epel-release || echo 'Make sure to have EPEL repo installed'"
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which zypper)" ]; then
 	# SUSE Linux

@@ -25,7 +25,7 @@ if [ -n "$(which apt-get)" ]; then
 elif [ -n "$(which yum)" ]; then
 	# RedHat/Fedora/CentOS
     PKG_CMD=$(which yum)
-    LIBS="gcc-c++ python-devel openssl-devel git swig python-setuptools m2crypto epel-release"
+    LIBS="gcc-c++ python-devel openssl-devel git swig python-setuptools m2crypto epel-release python-zmq"
     PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which zypper)" ]; then

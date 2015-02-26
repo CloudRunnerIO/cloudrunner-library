@@ -14,40 +14,36 @@ PKG_INSTALL=""
 LIBS=""
 PYTHON="$(which python)"
 ADDS=""
+PIP="pip"
 
 # Install requirements
 if [ -n "$(which apt-get)" ]; then
 	# Debian/Ubuntu
     PKG_CMD=$(which apt-get)
-    LIBS="g++ python-dev libssl-dev git-core m2crypto swig python-setuptools"
+    LIBS="g++ python-dev python-pip m2crypto msgpack-python python-psutil python-zmq"
     PKG_UPDATE="$PKG_CMD update"
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which yum)" ]; then
 	# RedHat/Fedora/CentOS
     PKG_CMD=$(which yum)
-    LIBS="gcc-c++ python-devel openssl-devel git swig python-setuptools m2crypto epel-release python-zmq"
-    PKG_UPDATE=""
+    LIBS="python-pip m2crypto python-zmq python-psutil"
+    PKG_UPDATE="yum install -y epel-release"
     PKG_INSTALL="$PKG_CMD install -y $LIBS"
 elif [ -n "$(which zypper)" ]; then
 	# SUSE Linux
     PKG_CMD=$(which zypper)
-    LIBS="gcc-c++ python-devel openssl-devel git swig python-m2crypto"
+    LIBS="gcc-c++ python-pip python-devel python-m2crypto"
     PKG_UPDATE=""
     PKG_INSTALL="$PKG_CMD -n in $LIBS"
 elif [ -n "$(which pacman)" ]; then
 	# ArchLinux
     PKG_CMD=$(which pacman)
-    LIBS="gcc python2 openssl git swig python2-m2crypto"
+    PIP="pip2"   
+    LIBS="gcc python2 python2-pip python2-m2crypto"
     PKG_UPDATE="$PKG_CMD -Syu --noconfirm"
     PKG_INSTALL="$PKG_CMD -Sy --noconfirm --needed $LIBS"
     PYTHON="$(which python2)"
     ADDS="$PKG_CMD -Sy --noconfirm --needed python2-pyzmq"
-elif [ -n "$(which emerge)" ]; then
-	# Gentoo
-    PKG_CMD=$(which emerge)
-    LIBS="openssl dev-vcs/git swig m2crypto"
-    PKG_UPDATE="$PKG_CMD --sync"
-    PKG_INSTALL="$PKG_CMD $LIBS"
 fi
 
 if [ -z "$PKG_CMD" ]; then
@@ -65,15 +61,7 @@ if [ -n "$ADDS" ]; then
     $ADDS
 fi
 
-# Clean 'cloudrunner' dir if exists
-rm -rf cloudrunner
-
-# Clone cloudrunner stable branch
-git clone https://github.com/CloudRunnerIO/cloudrunner.git
-
-cd cloudrunner
-
-$PYTHON setup.py install
+$PIP install cloudrunner
 
 OPTS=""
 

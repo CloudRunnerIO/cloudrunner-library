@@ -94,6 +94,7 @@ cloudrunner-node configure --id ${CRN_NODE:-$HOST} --server $CRN_SERVER $OPTS
 
 cloudrunner-node details
 
-if [[ ! $CRN_NORUN ]]; then
-    cloudrunner-node restart --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}
+if [[ ! $CRN_AUTORUN ]]; then
+    cloudrunner-node stop --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}
+    cloudrunner-node start --pidfile ${PIDFILE:-/var/run/cloudrunner-node.pid}
 fi

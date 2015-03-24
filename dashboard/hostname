@@ -1,4 +1,0 @@
-#! switch [*]
-
-hostname
-echo 'Done'

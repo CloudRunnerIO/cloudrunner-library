@@ -1,6 +1,6 @@
 #! switch [os=linux]
 
-cloudrunner-node details
+NO_COLORS=1 cloudrunner-node details
 
 uname -a
 

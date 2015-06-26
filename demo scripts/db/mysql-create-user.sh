@@ -1,6 +1,6 @@
 # Expected env variables:
 ROOTPASS=""
-if [ -n "DBNAME" ]; then
+if [ -n "$ROOTPASS" ]; then
 	ROOTPASS="-p$ROOTPASS"
 fi
 # Optional:

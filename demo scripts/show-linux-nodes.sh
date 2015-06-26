@@ -1,4 +1,4 @@
-#! switch [os=linux]
+#! You can run this on all linux machines [os=linux]
 
 NO_COLORS=1 cloudrunner-node details
 

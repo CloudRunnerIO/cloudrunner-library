@@ -1,4 +1,4 @@
-#! switch [os=windows]
+#! You can run this on all windows machines [os=windows]
 #! /usr/bin/ps1
 
 [Environment]::OSVersion

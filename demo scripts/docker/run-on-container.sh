@@ -21,4 +21,4 @@
 
 uname -a
 
-cloudrunner-node details
+NO_COLORS=1 cloudrunner-node details
